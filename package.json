@@ -1,0 +1,21 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "WebDev Bootcamp week 11 homework -flashcard application",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aellyl/Flashcard-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aellyl/Flashcard-Generator/issues"
+  },
+  "dependencies": {
+    "inquirer": "^3.1.1"
+  }
+}
