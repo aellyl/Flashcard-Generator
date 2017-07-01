@@ -19,7 +19,7 @@ Developed by Aelly Liu
 
 
 	</head>
-	
+
 	<body>
 		<div class="container">
 			<div class="jumbotron">
@@ -27,8 +27,9 @@ Developed by Aelly Liu
 			</div>
 
 			<div class="page-header">
-			<h2>Use this form to create your flashcard</h2>
+				<h2>Use this form to create your flashcard</h2>
 			</div>
+
 			<form id="createFC">
 				<div id="typeFC" class="section">
 					<select name="dropdown" class="form-control  required">
@@ -37,6 +38,7 @@ Developed by Aelly Liu
 					<option value="ClozeCard">Cloze Deleted</option>
 					</select>
 				</div>
+
 				<div class="section disabled">
 					<label>Front Text:</label>
 					<input type="text" id="front-input" class="form-control" disabled>
@@ -47,7 +49,7 @@ Developed by Aelly Liu
 					<label>Back Text:</label>
 					<input type="text" id="back-input" class="form-control" disabled>
 					<p class="form-text text-muted">
-					For Basic flashcard, enter an answer for the question.<br> 
+					For Basic flashcard, enter an answer for the question.<br>
 					For Cloze Deleted, enter portion of the text you would like to be quizzed on.
 					</p>
 					<input type="submit" id="submit" class="btn btn-default" name="submit" disabled>
@@ -56,33 +58,26 @@ Developed by Aelly Liu
 			</form>
 
 			<div class="page-header">
-			<h2>Below are the flashcards you have created</h2>
-			</div>
-			<div id="displayFC">
-	
+				<h2>Below are the flashcards you have created</h2>
 			</div>
 
-		
+			<div id="displayFC"><div>
 		</div>
-		
 
-		
-
-
-	
-				<!-- jQuery library -->
+		<!-- jQuery library -->
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
+
 		<script type="text/javascript" src="js/bundle.js"></script>
 		<!--<script type="text/javascript" src="js/ui.js"></script>-->
 		<script>
 
 			var clicked=0;
-			$("#displayFC").on("click",".card",function(e){
+			
+			$("#displayFC").on("click",".card",function(e) {
 				console.log(typeof this);
-				if(clicked)
+				if (clicked)
 				{
 					$(this).removeClass("flipped");
 					clicked=0;
@@ -92,7 +87,7 @@ Developed by Aelly Liu
 					$(this).addClass("flipped");
 					clicked=1;
 				}
-				
+
 			})
 			// function flip() {
  			//    $('.card').toggleClass('flipped');
@@ -100,9 +95,8 @@ Developed by Aelly Liu
 
 
 		</script>
-		
-	
+
+
 	</body>
 
 </html>
-
