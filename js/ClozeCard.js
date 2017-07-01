@@ -1,17 +1,15 @@
-function ClozeCard(text,cloze){
-    if(this instanceof ClozeCard){
-        this.fullText=text;
-        this.cloze=cloze;
-        if(this.fullText.includes(cloze))
-        {
-            this.partial=this.fullText.replace(cloze,"______");
+function ClozeCard(text,cloze) {
+    if (this instanceof ClozeCard) {
+        this.fullText = text;
+        this.cloze = cloze;
+        if (this.fullText.includes(cloze)) {
+            this.partial = this.fullText.replace(cloze, "______");
         }
         else throw "Invalid Cloze Card.";
     }
-    else{
+    else {
         return new ClozeCard(text,cloze);
     }
-    
 }
 
-module.exports=ClozeCard;
+module.exports = ClozeCard;
