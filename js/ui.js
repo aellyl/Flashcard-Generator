@@ -17,7 +17,7 @@ $('#createFC input, #createFC select').bind('input propertychange change',functi
 		if(allRequired == 1) {//if not empty
 			var nextSection = currentContainer.next('.section.disabled');
 			nextSection.removeClass('disabled').addClass('enabled').find('input, select,button').prop('disabled',false);
-			
+
 
 		}else{//if empty
 			var enabledSections = currentContainer.nextAll('.section.enabled');
@@ -50,7 +50,7 @@ $("#submit").click(function(){
 				//TODO: create a new basic flash card and display it
 				displayNewCard(new BasicCard(front,back));
 				break;
-			
+
 			case "ClozeCard":
 				displayNewCard(new ClozeCard(front,back));
 				break;
@@ -93,7 +93,7 @@ function displayNewCard(fc)
 		back=fc.back;
 	}
 	$("#displayFC").append("<div class=\"card\"><div class=\"front\">"
-				+front
+				+ front
 				+"</div><div class=\"back\">"+back
 				+"</div></div>");
 }

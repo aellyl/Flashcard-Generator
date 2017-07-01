@@ -16,6 +16,7 @@
     "url": "https://github.com/aellyl/Flashcard-Generator/issues"
   },
   "dependencies": {
+    "handlebars": "^4.0.10",
     "inquirer": "^3.1.1"
   }
 }
