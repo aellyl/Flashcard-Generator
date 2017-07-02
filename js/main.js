@@ -3,6 +3,7 @@ var ClozeCard = require("./ClozeCard.js");
 var inquirer = require("../node_modules/inquirer");
 var handlebars = require('handlebars');
 var fs = require('fs');
+var child_proc = require('child_process');
 
 // http://voidcanvas.com/get-working-directory-name-and-file-name-in-node/
 // console.log(__dirname)
@@ -12,20 +13,20 @@ console.log("Instruction:\n You have two types of flash cards that you can creat
 
 var cardsArr = [];
 
-function generate_html(cards_array) {
-    // https://stackoverflow.com/questions/7083045/fs-how-do-i-locate-a-parent-folder
-    var webpage_path = __dirname + '/../index_generated.html';
-    var template_path = __dirname + '/../index_template.html';
-    var html;
-    var html = fs.readFile(template_path, 'utf-8', function(error, source) {
-        var template = handlebars.compile(source);
-        var data = {
-            cards: cardsArr
-        }
-        return template(data);
-    });
-    return html
-}
+// function generate_html(cards_array) {
+//     // https://stackoverflow.com/questions/7083045/fs-how-do-i-locate-a-parent-folder
+//     var webpage_path = __dirname + '/../index_generated.html';
+//     var template_path = __dirname + '/../index_template.html';
+//     var html;
+//     var html = fs.readFile(template_path, 'utf-8', function(error, source) {
+//         var template = handlebars.compile(source);
+//         var data = {
+//             cards: cardsArr
+//         }
+//         return template(data);
+//     });
+//     return html
+// }
 
 
 var createFC = function() {
@@ -103,14 +104,27 @@ function moreFC() {
             name:"more",
             message:"Would you like to create more flash cards?"
         }
-    ]).then(function(answer){
+    ]).then(function(answer) {
         if(answer.more) {
             createFC();
         } else {
-            var html = generate_html(cardsArr);
-            console.log(html)
-            fs.writeFile(webpage_path, html);
+            // https://stackoverflow.com/questions/7083045/fs-how-do-i-locate-a-parent-folder
+            var webpage_path = __dirname + '/../index_generated.html';
+            var template_path = __dirname + '/../index_template.html';
+            fs.readFile(template_path, 'utf-8', function(error, source) {
+                var template = handlebars.compile(source);
+                var data = {
+                    cards: cardsArr
+                }
+                var html = template(data);
+                fs.writeFile(webpage_path, html);
+            });
 
+            if (process.platform == 'linux') {
+                child_proc.exec(`google-chrome ${webpage_path}`)
+            } else if (process.platform == 'darwin') {
+                child_proc.exec(`open -a "Google Chrome" ${webpage_path}`, function() {} );
+            }
         }
     });
 
